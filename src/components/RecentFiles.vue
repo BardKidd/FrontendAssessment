@@ -72,7 +72,7 @@
           <div
             v-for="file in sortedFiles"
             :key="file.id"
-            class="grid grid-cols-[30%_22%_21%_25%] gap-x-[16px] h-[71px] items-center even:bg-[#F9FAFD] hover:bg-[#F9FAFD] transition duration-200 group -mx-[30.5px] px-[30.5px]"
+            class="grid grid-cols-[30%_22%_21%_25%] 2xl:grid-cols-[31%_22%_20%_25%] gap-x-[16px] h-[71px] items-center even:bg-[#F9FAFD] hover:bg-[#F9FAFD] transition duration-200 group -mx-[30.5px] px-[30.5px]"
           >
             <div class="flex items-center gap-[16px]">
               <div
