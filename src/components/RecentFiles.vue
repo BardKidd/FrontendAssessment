@@ -8,8 +8,9 @@
     </h2>
 
     <div
-      class="bg-white rounded-[20px] shadow-figma-card px-[30.5px] pt-[29.5px] pb-[15px] box-border w-full"
+      class="bg-white rounded-[20px] shadow-figma-card px-[30.5px] pt-[29.5px] pb-[15px] box-border w-full overflow-x-auto custom-scrollbar"
     >
+      <div class="min-w-[800px]">
       <!-- Table Header -->
       <div
         class="grid grid-cols-12 gap-x-[16px] pb-[16px] border-b-[1px] border-[#EFEFEF]"
@@ -152,6 +153,7 @@
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

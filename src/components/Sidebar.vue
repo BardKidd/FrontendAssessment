@@ -1,13 +1,24 @@
 <template>
-  <aside class="w-full lg:w-[262px] bg-white h-auto lg:h-screen lg:sticky lg:top-0 shadow-[0px_2px_100px_rgba(0,0,0,0.1)] z-10 flex flex-col pt-[43px] pb-[40px] px-[38px] flex-shrink-0 overflow-y-auto overflow-x-hidden custom-scrollbar">
+  <aside
+    class="fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 w-[262px] bg-white h-screen shadow-[0px_2px_100px_rgba(0,0,0,0.1)] flex flex-col pt-[43px] pb-[40px] px-[38px] flex-shrink-0 overflow-y-auto overflow-x-hidden custom-scrollbar lg:relative lg:translate-x-0"
+    :class="isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'"
+  >
     <!-- Logo -->
-    <div class="flex items-center mb-[clamp(40px,8.3vh,85px)] cursor-pointer gap-[10px]">
-      <!-- Icon part -->
-      <svg class="h-[28px] w-auto flex-shrink-0" viewBox="0 0 54 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13.5 0L0 8.8L13.5 17.6L27 8.8L13.5 0ZM40.5 0L27 8.8L40.5 17.6L54 8.8L40.5 0ZM0 26.4L13.5 35.2L27 26.4L13.5 17.6L0 26.4ZM54 26.4L40.5 35.2L27 26.4L40.5 17.6L54 26.4ZM13.5 36.8L27 45.6L40.5 36.8L27 28L13.5 36.8Z" fill="#0061FF"/>
-      </svg>
-      <!-- Text part -->
-      <span class="font-black text-[25px] text-black tracking-[-0.04em] leading-none font-sans mt-[4px]">Dropbox</span>
+    <div class="flex items-center justify-between mb-[clamp(40px,8.3vh,85px)]">
+      <div class="flex items-center cursor-pointer gap-[10px]">
+        <!-- Icon part -->
+        <svg class="h-[28px] w-auto flex-shrink-0" viewBox="0 0 54 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.5 0L0 8.8L13.5 17.6L27 8.8L13.5 0ZM40.5 0L27 8.8L40.5 17.6L54 8.8L40.5 0ZM0 26.4L13.5 35.2L27 26.4L13.5 17.6L0 26.4ZM54 26.4L40.5 35.2L27 26.4L40.5 17.6L54 26.4ZM13.5 36.8L27 45.6L40.5 36.8L27 28L13.5 36.8Z" fill="#0061FF"/>
+        </svg>
+        <!-- Text part -->
+        <span class="font-black text-[25px] text-black tracking-[-0.04em] leading-none font-sans mt-[4px]">Dropbox</span>
+      </div>
+      <!-- Close button on Mobile -->
+      <button class="lg:hidden text-[#757897] hover:text-[#051F61] focus:outline-none -mr-[10px]" @click="toggleMobileMenu">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
 
     <!-- Navigation -->
@@ -72,7 +83,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 
 const props = defineProps({
   navigation: { type: Array, default: () => [] },
@@ -80,4 +91,6 @@ const props = defineProps({
 })
 
 const activeMenu = ref('home')
+const isMobileMenuOpen = inject('isMobileMenuOpen')
+const toggleMobileMenu = inject('toggleMobileMenu')
 </script>
