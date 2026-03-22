@@ -57,10 +57,10 @@ onMounted(async () => {
       <Sidebar :navigation="data.navigation" :storage="data.storage" />
       <!-- Main Content -->
       <main
-        class="flex-1 flex flex-col pt-[36px] lg:pl-[68px] lg:pr-[67px] px-[24px] pb-[35px] overflow-y-auto overflow-x-hidden w-full relative z-0"
+        class="flex-1 flex flex-col pt-[36px] lg:px-[67.5px] px-[24px] pb-[35px] overflow-y-auto overflow-x-hidden w-full relative z-0"
       >
         <Header :user="data.user" />
-        <Folders :folders="filteredFolders" class="mt-[34px]" />
+        <Folders :folders="filteredFolders" class="mt-[28px]" />
         <RecentFiles :recentFiles="filteredRecentFiles" />
       </main>
     </template>

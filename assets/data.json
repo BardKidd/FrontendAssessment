@@ -16,15 +16,16 @@
       "icon": "assets/icons/icon-starred.svg"
     },
     {
-      "id": "shared",
-      "label": "Shared",
-      "icon": "assets/icons/icon-shared.svg"
-    },
-    {
       "id": "file-requests",
       "label": "Files Requests",
       "icon": "assets/icons/icon-file-requests.svg"
     },
+    {
+      "id": "shared",
+      "label": "Shared",
+      "icon": "assets/icons/icon-shared.svg"
+    },
+
     {
       "id": "deleted",
       "label": "Deleted",
@@ -113,7 +114,8 @@
       "sharedUsers": [
         { "name": "User 1", "avatar": "assets/avatars/avatar-1.png" },
         { "name": "User 2", "avatar": "assets/avatars/avatar-2.png" },
-        { "name": "User 3", "avatar": "assets/avatars/avatar-3.png" }
+        { "name": "User 3", "avatar": "assets/avatars/avatar-3.png" },
+        { "name": "User 4", "avatar": "assets/avatars/avatar-4.png" }
       ],
       "sharedUsersCount": 12,
       "insideFiles": 597

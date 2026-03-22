@@ -13,10 +13,10 @@
       <div class="min-w-[800px]">
         <!-- Table Header -->
         <div
-          class="grid grid-cols-12 gap-x-[16px] pb-[16px] border-b-[1px] border-[#EFEFEF]"
+          class="grid grid-cols-[31%_22%_20%_25%] gap-x-[16px] pb-[16px] border-b-[1px] border-[#EFEFEF]"
         >
           <div
-            class="col-span-4 flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
+            class="flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
             :class="sortKey === 'name' ? 'text-main2' : 'text-sub'"
             @click="toggleSort('name')"
           >
@@ -29,7 +29,7 @@
             />
           </div>
           <div
-            class="col-span-3 flex items-center gap-[4px] cursor-default font-medium text-[14px] text-sub leading-[18px]"
+            class="flex items-center gap-[4px] cursor-default font-medium text-[14px] text-sub leading-[18px]"
           >
             Shared Users
             <!-- !沒有實際功能，所以先隱藏起來 -->
@@ -40,7 +40,7 @@
           /> -->
           </div>
           <div
-            class="col-span-2 flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
+            class="flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
             :class="sortKey === 'size' ? 'text-main2' : 'text-sub'"
             @click="toggleSort('size')"
           >
@@ -53,7 +53,7 @@
             />
           </div>
           <div
-            class="col-span-3 flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
+            class="flex items-center gap-[4px] cursor-pointer font-medium text-[14px] leading-[18px] select-none"
             :class="sortKey === 'date' ? 'text-main2' : 'text-sub'"
             @click="toggleSort('date')"
           >
@@ -72,9 +72,9 @@
           <div
             v-for="file in sortedFiles"
             :key="file.id"
-            class="grid grid-cols-12 gap-x-[16px] py-[14.5px] items-center even:bg-[#F9FAFD] hover:bg-[#F9FAFD] transition duration-200 group -mx-[30.5px] px-[30.5px]"
+            class="grid grid-cols-[30%_22%_21%_25%] gap-x-[16px] h-[71px] items-center even:bg-[#F9FAFD] hover:bg-[#F9FAFD] transition duration-200 group -mx-[30.5px] px-[30.5px]"
           >
-            <div class="col-span-4 flex items-center gap-[16px]">
+            <div class="flex items-center gap-[16px]">
               <div
                 class="w-[40px] h-[40px] rounded-[10px] flex items-center justify-center flex-shrink-0"
                 :class="{
@@ -115,24 +115,26 @@
                 </svg>
               </div>
               <span
-                class="font-medium text-[14px] text-brand hover:underline cursor-pointer truncate"
+                class="font-medium text-[14px] text-brand hover:underline cursor-pointer truncate leading-none mt-[2px]"
                 >{{ file.name }}</span
               >
             </div>
 
-            <div class="col-span-3 flex items-center relative h-[36px]">
+            <div
+              class="flex items-center relative h-[36px] translate-x-[3px] translate-y-[1px]"
+            >
               <img
                 v-for="(u, idx) in file.sharedUsers.slice(0, 4)"
                 :key="idx"
                 :src="u.avatar"
-                :style="{ zIndex: idx, left: `${idx * 28}px` }"
+                :style="{ zIndex: idx, left: `${idx * 25}px` }"
                 class="absolute top-0 w-[36px] h-[36px] rounded-[10px] border-[2px] border-white object-cover bg-gray-200 box-border shadow-sm"
               />
               <div
                 v-if="file.sharedUsersCount > 0"
                 :style="{
                   zIndex: 10,
-                  left: `${Math.min(file.sharedUsers.length, 4) * 28}px`,
+                  left: `${Math.min(file.sharedUsers.length, 4) * 25}px`,
                 }"
                 class="absolute top-0 w-[36px] h-[36px] rounded-[10px] border-[2px] border-white bg-[#EBF2FF] text-brand font-semibold text-[13px] flex items-center justify-center box-border shadow-sm"
               >
@@ -140,14 +142,16 @@
               </div>
             </div>
 
-            <div class="col-span-2 text-[14px] font-normal text-textDark">
+            <div
+              class="text-[14px] font-normal text-textDark leading-none mt-[2px]"
+            >
               {{ file.size }}
             </div>
 
             <div
-              class="col-span-3 flex justify-between items-center text-[14px] font-normal text-textDark"
+              class="flex justify-between items-center text-[14px] font-normal text-textDark"
             >
-              <span>{{ file.modifiedDate }}</span>
+              <span class="leading-none mt-[2px]">{{ file.modifiedDate }}</span>
               <div class="mr-[12px]">
                 <button
                   :ref="

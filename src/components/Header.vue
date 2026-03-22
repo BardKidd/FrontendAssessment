@@ -28,29 +28,30 @@
         </svg>
       </button>
       <div class="flex flex-col justify-center h-full">
-        <h1 class="text-[28px] font-bold text-main2 leading-none lg:mb-[8px]">
+        <h1 class="text-[28px] font-bold text-main2 leading-none lg:mb-[14px]">
           My Cloud
         </h1>
         <p
           class="hidden lg:block text-[20px] font-medium text-sub leading-none tracking-tight"
         >
-          Welcome, {{ user?.name || 'James Alto' }}! 👋
+          Welcome, {{ user?.name || 'James Alto' }}!
+          <span class="ml-[12px]">👋</span>
         </p>
       </div>
     </div>
 
     <!-- Right actions -->
-    <div class="flex items-center gap-[12px] lg:gap-[24px]">
+    <div class="flex items-center">
       <!-- Search Input (Desktop) -->
       <SearchBar
         v-model="searchQuery"
         placeholder="Search anything here"
-        class="hidden lg:flex w-[336px]"
+        class="header-search hidden lg:flex w-[336px] mr-[12px]"
       />
 
       <!-- Notification Icon -->
       <button
-        class="w-[40px] h-[40px] bg-white rounded-[8px] flex flex-shrink-0 items-center justify-center relative hover:text-brand transition focus:outline-none shadow-figma-drop"
+        class="header-notify w-[40px] h-[40px] bg-white rounded-[8px] flex flex-shrink-0 items-center justify-center relative hover:text-brand transition focus:outline-none shadow-figma-drop mr-[12px] -mt-[4px]"
       >
         <svg
           class="w-[20px] h-[20px] text-main2"
@@ -70,7 +71,7 @@
 
       <!-- Settings Icon -->
       <button
-        class="hidden sm:flex w-[40px] h-[40px] bg-white rounded-[8px] flex-shrink-0 items-center justify-center hover:text-brand transition focus:outline-none shadow-figma-drop"
+        class="header-settings hidden sm:flex w-[40px] h-[40px] bg-white rounded-[8px] flex-shrink-0 items-center justify-center hover:text-brand transition focus:outline-none shadow-figma-drop mr-[12px] -mt-[4px]"
       >
         <svg
           class="w-[20px] h-[20px] text-main2"
@@ -87,7 +88,7 @@
 
       <!-- Avatar -->
       <div
-        class="w-[40px] h-[40px] rounded-[8px] overflow-hidden shrink-0 cursor-pointer bg-white shadow-figma-drop"
+        class="header-avatar w-[40px] h-[40px] rounded-[8px] overflow-hidden shrink-0 cursor-pointer bg-white shadow-figma-drop -mr-[4.5px] -mt-[5px]"
       >
         <img
           src="/assets/avatars/member.jpg"

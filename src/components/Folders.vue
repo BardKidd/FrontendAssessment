@@ -8,7 +8,7 @@
         All files
       </h2>
       <button
-        class="bg-[#EBF2FF] text-brand px-[20px] py-[10px] rounded-[8px] text-[14px] font-bold flex items-center justify-center hover:bg-[#DCE7FF] transition focus:outline-none h-[40px] leading-[20px] shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
+        class="bg-brandLight text-brand w-[141px] py-[10px] rounded-[8px] text-[14px] font-bold flex items-center justify-center hover:bg-[#DCE7FF] transition focus:outline-none h-[40px] leading-[20px] shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
       >
         <span class="mr-2">+</span> Add new
       </button>
@@ -37,7 +37,7 @@
             </div>
             <div class="flex flex-col">
               <h3
-                class="font-medium text-blackText text-[16px] leading-[18px] mb-[4px]"
+                class="font-medium text-blackText text-[16px] leading-[18px] mb-[2px] -mt-[5px]"
               >
                 {{ folder.name }}
               </h3>
@@ -48,7 +48,7 @@
           </div>
           <div class="relative">
             <button
-              class="text-sub hover:text-main2 focus:outline-none flex items-center h-full pt-[2px]"
+              class="text-sub hover:text-main2 focus:outline-none flex items-center justify-center p-[4px] -mr-[12px] mt-[2px]"
               @click.stop="toggleDropdown(folder.id)"
             >
               <svg
@@ -71,10 +71,10 @@
         </div>
 
         <!-- Bottom info -->
-        <div class="flex mt-[33px] gap-[23px]">
-          <div class="flex flex-col w-[148px] flex-shrink-0">
+        <div class="flex mt-[33px] gap-[35px]">
+          <div class="flex flex-col w-[130px] flex-shrink-0 pl-[4px]">
             <div
-              class="font-medium text-[14px] leading-[18px] text-sub mb-[10px] tracking-wide"
+              class="font-medium text-[14px] leading-[18px] text-sub mb-[10px] tracking-wide translate-x-[6px] -translate-y-[2px]"
             >
               Shared Users
             </div>
@@ -83,14 +83,14 @@
                 v-for="(u, idx) in folder.sharedUsers.slice(0, 4)"
                 :key="idx"
                 :src="u.avatar"
-                :style="{ zIndex: idx, left: `${idx * 28}px` }"
+                :style="{ zIndex: idx, left: `${idx * 25}px` }"
                 class="absolute top-0 w-[36px] h-[36px] rounded-[10px] border-[2px] border-white object-cover bg-gray-200 box-border shadow-sm"
               />
               <div
                 v-if="folder.sharedUsersCount > 0"
                 :style="{
                   zIndex: 10,
-                  left: `${Math.min(folder.sharedUsers.length, 4) * 28}px`,
+                  left: `${Math.min(folder.sharedUsers.length, 4) * 25}px`,
                 }"
                 class="absolute top-0 w-[36px] h-[36px] rounded-[10px] border-[2px] border-white bg-[#EBF2FF] text-brand font-semibold text-[13px] flex items-center justify-center box-border"
               >
@@ -125,11 +125,32 @@ defineProps({
 });
 
 const folderMenuItems = [
-  { label: 'Rename', iconPaths: ['M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'] },
-  { label: 'Share', iconPaths: ['M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z'] },
-  { label: 'Download', iconPaths: ['M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'] },
+  {
+    label: 'Rename',
+    iconPaths: [
+      'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z',
+    ],
+  },
+  {
+    label: 'Share',
+    iconPaths: [
+      'M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z',
+    ],
+  },
+  {
+    label: 'Download',
+    iconPaths: [
+      'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4',
+    ],
+  },
   { divider: true },
-  { label: 'Delete', iconPaths: ['M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'], danger: true },
+  {
+    label: 'Delete',
+    iconPaths: [
+      'M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16',
+    ],
+    danger: true,
+  },
 ];
 
 const openDropdownId = ref(null);
@@ -150,4 +171,3 @@ onUnmounted(() => {
   document.removeEventListener('click', closeDropdown);
 });
 </script>
-
