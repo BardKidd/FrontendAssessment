@@ -14,7 +14,7 @@
         <span class="font-black text-[25px] text-black tracking-[-0.04em] leading-none font-sans mt-[4px]">Dropbox</span>
       </div>
       <!-- Close button on Mobile -->
-      <button class="lg:hidden text-[#757897] hover:text-[#051F61] focus:outline-none -mr-[10px]" @click="toggleMobileMenu">
+      <button class="lg:hidden text-sub hover:text-main2 focus:outline-none -mr-[10px]" @click="toggleMobileMenu">
         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -28,7 +28,7 @@
         :key="item.id"
         @click="activeMenu = item.id"
         class="w-full flex items-center gap-[20px] relative transition-colors duration-200 text-[18px] font-semibold leading-[24px]"
-        :class="activeMenu === item.id ? 'text-[#051F61]' : 'text-[#757897] hover:text-[#051F61] group'"
+        :class="activeMenu === item.id ? 'text-main2' : 'text-sub hover:text-main2 group'"
       >
         <!-- Active Indicator Box with SVG Crop -->
         <div v-if="activeMenu === item.id" class="absolute -left-[38px] top-1/2 -translate-y-1/2 w-[11px] h-[37px] overflow-hidden flex items-center justify-start">
@@ -49,7 +49,7 @@
               WebkitMaskRepeat: 'no-repeat',
               WebkitMaskPosition: 'center',
             }"
-            :class="activeMenu === item.id ? 'bg-[#0061FF]' : 'bg-[#757897] group-hover:bg-[#051F61]'"
+            :class="activeMenu === item.id ? 'bg-brand' : 'bg-sub group-hover:bg-main2'"
           ></div>
         </div>
         
@@ -64,17 +64,17 @@
         <img src="/assets/img/file1-DrawKit3D.png" alt="Folder" class="w-[97px] h-[82px] object-contain" />
       </div>
       <div class="w-[142px]">
-        <div class="text-[14px] font-semibold text-[#051F61] mb-[10px] leading-[17px] text-left">
+        <div class="text-[14px] font-semibold text-main2 mb-[10px] leading-[17px] text-left">
           {{ storage.percentage }}% In-use
         </div>
-        <div class="w-full h-[6px] bg-[#EBF2FF] rounded-[8px] mb-[10px] relative overflow-hidden">
-          <div class="h-full bg-[#051F61] rounded-[8px] absolute left-0 top-0 transition-all duration-300" :style="{ width: storage.percentage + '%' }"></div>
+        <div class="w-full h-[6px] bg-brandLight rounded-[8px] mb-[10px] relative overflow-hidden">
+          <div class="h-full bg-main2 rounded-[8px] absolute left-0 top-0 transition-all duration-300" :style="{ width: storage.percentage + '%' }"></div>
         </div>
         <div class="flex items-center w-full justify-between text-[11px] leading-[13px] mb-[22px]">
-          <span class="text-[#051F61] font-bold">{{ storage.used }}{{ storage.unit }}</span>
-          <span class="text-[#757897] font-semibold">{{ storage.total }}{{ storage.unit }}</span>
+          <span class="text-main2 font-bold">{{ storage.used }}{{ storage.unit }}</span>
+          <span class="text-sub font-semibold">{{ storage.total }}{{ storage.unit }}</span>
         </div>
-        <button class="w-[142px] h-[40px] bg-[#0061FF] text-white rounded-[8px] font-bold text-[14px] leading-[17px] hover:opacity-90 transition">
+        <button class="w-[142px] h-[40px] bg-brand text-white rounded-[8px] font-bold text-[14px] leading-[17px] hover:opacity-90 transition">
           Upgrade
         </button>
       </div>
