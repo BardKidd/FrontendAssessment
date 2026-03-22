@@ -46,19 +46,28 @@
               </p>
             </div>
           </div>
-          <button
-            class="text-sub hover:text-main2 focus:outline-none flex items-center h-full pt-[2px]"
-          >
-            <svg
-              class="w-[24px] h-[24px]"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+          <div class="relative">
+            <button
+              class="text-sub hover:text-main2 focus:outline-none flex items-center h-full pt-[2px]"
+              @click.stop="toggleDropdown(folder.id)"
             >
-              <path
-                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-              />
-            </svg>
-          </button>
+              <svg
+                class="w-[24px] h-[24px]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+                />
+              </svg>
+            </button>
+            <!-- Fake Dropdown -->
+            <DropdownMenu
+              v-if="openDropdownId === folder.id"
+              :items="folderMenuItems"
+              class="absolute right-0 top-[30px] z-50"
+            />
+          </div>
         </div>
 
         <!-- Bottom info -->
@@ -108,7 +117,37 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import DropdownMenu from './DropdownMenu.vue';
+
 defineProps({
   folders: { type: Array, default: () => [] },
 });
+
+const folderMenuItems = [
+  { label: 'Rename', iconPaths: ['M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'] },
+  { label: 'Share', iconPaths: ['M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z'] },
+  { label: 'Download', iconPaths: ['M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4'] },
+  { divider: true },
+  { label: 'Delete', iconPaths: ['M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16'], danger: true },
+];
+
+const openDropdownId = ref(null);
+
+const toggleDropdown = (id) => {
+  openDropdownId.value = openDropdownId.value === id ? null : id;
+};
+
+const closeDropdown = () => {
+  openDropdownId.value = null;
+};
+
+onMounted(() => {
+  document.addEventListener('click', closeDropdown);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', closeDropdown);
+});
 </script>
+
